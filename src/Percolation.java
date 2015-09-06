@@ -27,11 +27,6 @@ public class Percolation {
         }
     }
 
-    private int getIndex(int i, int j) {
-        validate(i, j);
-        return size*i-(size-j+1);
-    }
-
     public void open(int i, int j) {
         // open site (row i, column j) if it is not open already
         validate(i, j);
@@ -72,6 +67,11 @@ public class Percolation {
         return uf.connected(virtualTopCell, virtualBottomCell);
     }
 
+    private int getIndex(int i, int j) {
+        validate(i, j);
+        return size*i-(size-j+1);
+    }
+
     private void validate(int i, int j) {
         if (!isCellExisting(i, j))
             throw new IndexOutOfBoundsException("index is out of bounds");
@@ -85,7 +85,6 @@ public class Percolation {
         // test client (optional)
 
         Percolation percolation = new Percolation(3);
-
         percolation.open(1, 2);
         percolation.open(2, 2);
         percolation.open(3, 2);
